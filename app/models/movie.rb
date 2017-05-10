@@ -14,20 +14,29 @@ class Movie < ApplicationRecord
   # - description: no rules
   # - image_url: no rules
 
-# SHORTCUT TO FIND THE DIRECTOR FOR A MOVIE
+  # SHORTCUT TO FIND THE DIRECTOR FOR A MOVIE
 
-# :director  - defines the method
-# :class_name => "Director" - when invoked on a movie, fetches a result from the Directors table
-#  :foreign_key => "director_id" - Use the value in the director_id column of the movie to query the directors table for a row.
+  # :director  - defines the method
+  # :class_name => "Director" - when invoked on a movie, fetches a result from the Directors table
+  #  :foreign_key => "director_id" - Use the value in the director_id column of the movie to query the directors table for a row.
 
-belongs_to :director, :class_name => "Director", :foreign_key => "director_id"
+  belongs_to :director, :class_name => "Director", :foreign_key => "director_id"
 
-# SHORTCUT TO FIND ALL THE CHARACTERS FOR A MOVIE
+  # Shortcut to find the ALL the CHARACTERS for a MOVIE
 
-# :characters: Define a method called .characters for all movie objects.
-# :class_name => "Character": When someone invokes .characters on a movie, go fetch results from the Charcters table.
-# :foreign_key => "movie_id": Search for the movie's id in the movie_id column of the Characters table.
+  # :characters: Define a method called .characters for all movie objects.
+  # :class_name => "Character": When someone invokes .characters on a movie, go fetch results from the Charcters table.
+  # :foreign_key => "movie_id": Search for the movie's id in the movie_id column of the Characters table.
 
-has_many :characters, :class_name => "Character", :foreign_key => "movie_id"
+  has_many :characters, :class_name => "Character", :foreign_key => "movie_id"
+
+  # Shortcut to find all the ACTORS for a movie
+  has_many :actors, :class_name => "Actor", :foreign_key => "actor_id"
+
+# "Through" many-to-many helper method
+  has_many :characters
+  has_many :actors, :through => :characters
+
+
 
 end

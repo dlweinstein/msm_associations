@@ -13,4 +13,8 @@ validates :name, :presence => true, :uniqueness => { :scope => :dob }
   # Shortcut to find the ALL the MOVIES for an actor
   has_many :movies, :class_name => "Movie", :foreign_key => "movie_id"
 
+# "Through" many-to-many helper method
+  has_many :characters
+  has_many :movies, :through => :characters
+
 end

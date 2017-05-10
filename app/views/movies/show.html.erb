@@ -50,10 +50,9 @@
 
 <!-- Show list of actors -->
 <ul>
-  <% @movie.characters.each do |character| %>
+  <% @movie.actors.each do |actor| %>
   <li>
-    <%= character.actor.name %>
-    (<%= character.name %>)
+    <%= actor.name %>
   </li>
   <% end %>
 </ul>

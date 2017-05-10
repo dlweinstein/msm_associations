@@ -18,10 +18,10 @@
       <% @characters.each do |character| %>
       <tr>
         <td>
-          <%= @characters.movie.title %>
+          <%= character.movie.title %>
         </td>
           <td>
-            <%= @characters.actor.name %>
+            <%= character.actor.name %>
           </td>
         <td><%= character.name %></td>
         <td>
